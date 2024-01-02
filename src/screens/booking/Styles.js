@@ -122,6 +122,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
   },
+
   room: {
     fontFamily: "bold",
     fontSize: 16,
@@ -129,13 +130,14 @@ const styles = StyleSheet.create({
   },
   counterView: {
     height: 41,
+    width: 101,
     borderRadius: 5,
     borderWidth: 1,
     borderColor: "#E6E6E6",
     flexDirection: "row",
     justifyContent: "space-evenly",
     alignItems: "center",
-    flex: 0.3,
+    // flex: 0.3,
   },
   number: {
     fontFamily: "regular",
