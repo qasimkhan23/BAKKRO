@@ -96,7 +96,7 @@ const BookingScreen = ({ navigation }) => {
         {/* zones container view */}
 
         <View style={styles.zonesContainer}>
-          <Text styles={styles.zoneTitle}>Select Geographical Zones ff</Text>
+          <Text styles={styles.zoneTitle}>Select Geographical Zones </Text>
 
           <View style={styles.zoneTagContainer}>
             {tagsData.map((item, index) => (

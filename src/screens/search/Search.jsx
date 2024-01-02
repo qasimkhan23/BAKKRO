@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Image,
   Text,
@@ -7,10 +7,12 @@ import {
   View,
   ScrollView,
 } from "react-native";
-import { Filter, Search } from "../../../assets/svgs/svg";
+import { Filter, Search, Cross } from "../../../assets/svgs/svg";
 import Header from "../../components/header/Header";
 import styles from "./Styles";
 import PropertyCard from "../../components/propertyCard/PropertyCard";
+import Modal from "react-native-modal";
+import FilterScreen from "../filter/Filter";
 
 const SearchScreen = () => {
   let data = [
@@ -39,60 +41,83 @@ const SearchScreen = () => {
       price: "$750.90",
     },
   ];
+  const [isModalVisible, setModalVisible] = useState(false);
 
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
   return (
-    <View style={[styles.container]}>
-      <Header title={"Search"} />
-      <ScrollView
-        style={styles.bodyContainer}
-        showsVerticalScrollIndicator={false}
-      >
-        {/* search view */}
-        <View style={styles.searchContainer}>
-          <View style={styles.iconContainer}>
-            <TouchableOpacity style={styles.searchTextContainer}>
-              <Search />
-              <Text style={styles.textSearch}>Search...</Text>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Filter />
-            </TouchableOpacity>
+    <>
+      <View style={[styles.container]}>
+        <Header title={"Search"} />
+        <ScrollView
+          style={styles.bodyContainer}
+          showsVerticalScrollIndicator={false}
+        >
+          {/* search view */}
+          <View style={styles.searchContainer}>
+            <View style={styles.iconContainer}>
+              <TouchableOpacity style={styles.searchTextContainer}>
+                <Search />
+                <Text style={styles.textSearch}>Search...</Text>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={toggleModal}>
+                <Filter />
+              </TouchableOpacity>
+            </View>
           </View>
-        </View>
-        {/* search view ends */}
+          {/* search view ends */}
 
-        {/* most popular view */}
-        <View style={styles.popularViewContainer}>
-          <Text style={styles.popularText}>Most Popular</Text>
+          {/* most popular view */}
+          <View style={styles.popularViewContainer}>
+            <Text style={styles.popularText}>Most Popular</Text>
 
-          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-            <View style={{ flexDirection: "row" }}>
+            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+              <View style={{ flexDirection: "row" }}>
+                {data.map((item, index) => (
+                  <PropertyCard
+                    key={item.id}
+                    details={{ ...item, index }}
+                    type="mostPopular"
+                  />
+                ))}
+              </View>
+            </ScrollView>
+          </View>
+          {/* most popular view ends here */}
+          <View style={styles.mostViewedContainer}>
+            <Text style={styles.mostViewsText}>Most View</Text>
+
+            <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
               {data.map((item, index) => (
                 <PropertyCard
                   key={item.id}
                   details={{ ...item, index }}
-                  type="mostPopular"
+                  customStyles={{ marginBottom: 20 }}
                 />
               ))}
             </View>
-          </ScrollView>
-        </View>
-        {/* most popular view ends here */}
-        <View style={styles.mostViewedContainer}>
-          <Text style={styles.mostViewsText}>Most View</Text>
-
-          <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
-            {data.map((item, index) => (
-              <PropertyCard
-                key={item.id}
-                details={{ ...item, index }}
-                customStyles={{ marginBottom: 20 }}
-              />
-            ))}
+          </View>
+        </ScrollView>
+      </View>
+      <Modal
+        isVisible={isModalVisible}
+        animationIn="slideInRight"
+        animationOut="slideOutRight"
+      >
+        <View style={styles.modalMainView}>
+          <View style={styles.modalContainer}>
+            <View style={styles.filterTextView}>
+              <Text style={styles.filterText}>Filter</Text>
+              <TouchableOpacity onPress={toggleModal}>
+                <Cross />
+              </TouchableOpacity>
+            </View>
+            <FilterScreen />
           </View>
         </View>
-      </ScrollView>
-    </View>
+      </Modal>
+    </>
   );
 };
 

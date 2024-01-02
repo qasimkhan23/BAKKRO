@@ -57,5 +57,29 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#3A3A47",
   },
+  modalMainView: {
+    flex: 1,
+    backgroundColor: "white",
+    width: "85%",
+    alignSelf: "flex-end",
+    marginRight: -20,
+    marginTop: -23,
+    marginBottom: -20,
+  },
+  modalContainer: {
+    marginTop: 25,
+    padding: 25,
+    flex: 1,
+  },
+  filterText: {
+    fontFamily: "bold",
+    fontSize: 20,
+    color: "#000",
+  },
+  filterTextView: {
+    alignItems: "center",
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
 });
 export default styles;

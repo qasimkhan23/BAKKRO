@@ -23,6 +23,7 @@ import filter from "./Filter.svg";
 import search from "./Search.svg";
 import liked from "./Liked.svg";
 import notLiked from "./NotLiked.svg";
+import cross from "./Cross.svg";
 
 export const Logo = logo;
 export const InactiveHome = inactiveHome;
@@ -47,3 +48,4 @@ export const Filter = filter;
 export const Search = search;
 export const Liked = liked;
 export const NotLiked = notLiked;
+export const Cross = cross;
