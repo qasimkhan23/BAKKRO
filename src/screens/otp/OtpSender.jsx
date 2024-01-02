@@ -1,116 +1,133 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {
-  Image,
-  Text,
-  TextInput,
-  TouchableOpacity,
   View,
+  StyleSheet,
+  TextInput,
+  Text,
   ScrollView,
-  ImageBackground,
+  TouchableOpacity
 } from "react-native";
-import styles from "./Styles";
-import { FirebaseRecaptchaVerifierModal } from 'expo-firebase-recaptcha';
-import { firebaseConfig } from '../config';
-import firebase from 'firebase/compat/app';
+import CountryPicker from 'react-native-country-picker-modal';
+import { Logo } from "../../../assets/svgs/svg";
+import 'react-native-gesture-handler';
 
-const OtpSender = ({ navigation }) => {
+const OtpSenderScreen = ({ navigation }) => {
 
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [code, setCode] = useState('');
-  const [verificationId, setVerificationId] = useState(null);
-  // ...
-const recaptchaVerifier = useRef(null);
+  const [selectedCountry, setSelectedCountry] = useState({ cca2: 'CI', callingCode: '225' });
 
-const sendVerification = () => {
-  const phoneProvider = new firebase.auth.PhoneAuthProvider();
-  phoneProvider
-    .verifyPhoneNumber(phoneNumber, recaptchaVerifier.current)
-    .then(setVerificationId);
-  setPhoneNumber('');
-}
-
-  const confirmCode = () => {
-    const credential = firebase.auth.PhoneAuthProvider.credential(
-      verificationId, code
-    );
-    firebase.auth().signInWithCredential(credential)
-      .then(() => {
-        setCode('')
-      })
-      .catch((error) => {
-        // show an alert
-      })
-    Alert.alert(
-      'login is goo'
-    )
-  }
-
+  const handleLogin = () => {
+    navigation.navigate("BottomStack", {
+      screen: "Home",
+      params: {
+        screen: "HomeScreen"
+      },
+    });
+  };
+ 
   return (
-    < View style={styles.container}>
-      <FirebaseRecaptchaVerifierModal
-        ref={recaptchaVerifier}
-        firebaseConfig={firebaseConfig}
-      />
-      < Text style={styles.otpText}>
-        Login using OTP
-      </Text>
-      <TextInput
-        placeholder='Phone Number With Country code'
-        onChangeText={setPhoneNumber}
-        keyboardType='phone-pad'
-        autoCompleteType='tel'
-        style={styles.TextInput}
-      />
-
-      <TouchableOpacity style={styles.sendCode} onPress={sendVerification}>
-        <Text style={styles.buttonText}>send Verification</Text>
-      </TouchableOpacity>
-
-      <TextInput
-        placeholder='Phone Number With Country code'
-        onChangeText={setCode}
-        keyboardType='number-pad'
-        style={styles.TextInput}
-      />
-      <TouchableOpacity style={styles.sendVerification} onPress={confirmCode}>
-        <Text style={styles.buttonText}>confirm Verification</Text>
-      </TouchableOpacity>
-
+    <View style={styles.container}>
+      <View >
+        <Logo />
+      </View>
+      <View style={styles.section}>
+        <Text style={styles.title}>ENTREZ VOTRE</Text>
+        <Text style={styles.title2}>NUMÉRO DE TÉLÉPHONE</Text>
+        <Text style={styles.description}>Nous vous enverrons un code de confirmation à celui-ci</Text>
+        {/* <Text style={styles.subtitle}>Entrez le numéro de téléphone</Text> */}
+        <View style={styles.inputContainer}>
+          <CountryPicker
+            {...{
+              onSelect: (country) => setSelectedCountry(country),
+              countryCode: selectedCountry?.cca2 || 'US', // Code par défaut, ici les États-Unis
+              withCountryNameButton: false, // Désactive l'affichage du nom du pays
+              withCallingCode: false, // Désactive l'affichage du code de pays
+            }} />
+          <TextInput
+            id="telVerification" 
+            name="telVerification"
+            style={styles.input}
+            placeholder="Numéro de téléphone"
+            keyboardType="phone-pad"
+          />
+        </View>
+      </View>
+      <View style={styles.btnContainer}>
+          <TouchableOpacity style={styles.btn} onPress={() => handleLogin()}>
+            <Text style={styles.btnText}>Continue</Text>
+          </TouchableOpacity>
+        </View>
     </View>
-  )
-
-};  
+  );
+};
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: ' #000',
-      alignItems: 'center',
-      justifyContent: 'center'
+  container: {
+    flex: 1,
+    padding: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor:"white",
     },
-    textInput: {
-      paddingTop: 40,
-      paddingBottom: 20,
-      paddingHorizontal: 20,
-      fontSize: 24,
-      borderBottomColor: '#fff',
-      borderBottomWidth: 2,
-      marginBottom: 20,
-      textAlign: 'center',
-      color: '#fff'
-    },
-    sendVerification: {
-      padding: 20,
-      backgroundColor: '#3498b',
-      borderRadius: 10
-    },
-    sendCode: {
-      padding: 20,
-      backgroundColor: '#9b59b6',
-      borderRadius: 10,
-    }
-  })
-  
-  
-  export default OtpSender;
-  
+  logoContainer: {
+    position: 'absolute',
+    top: 70,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  logo: {
+    width: 137, // Ajuste la largeur selon tes besoins
+    height: 85, // Ajuste la hauteur selon tes besoins
+  },
+  section: {
+    width: '98%', // Ajuste la largeur de la section selon tes besoins
+  },
+  title: {
+    fontSize: 29,
+    fontWeight: 'bold',
+    marginBottom: 8,
+    // color: "white"
+  },
+  title2: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    marginBottom: 8,
+    color: "orange"
+  },
+  subtitle: {
+    fontSize: 24,
+    // color: "white",
+    marginBottom: 8,
+  },
+  description: {
+    fontSize: 16,
+    marginBottom: 16,
+    // color: "white"
+  },
+  inputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 100,
+  },
+  input: {
+    flex: 1,
+    width: 323,
+    height: 60,
+    borderColor: 'gray',
+    backgroundColor: 'white',
+    borderWidth: 1,
+    borderRadius: 10,
+    padding: 8,
+    marginLeft: 8,
+  },
+  BoutonPosition: {
+    position: 'absolute',
+    bottom: 70,
+  }
+
+
+})
+
+
+
+
+export default OtpSenderScreen;
