@@ -53,7 +53,7 @@ const OtpSenderScreen = ({ navigation }) => {
       </View>
       <View style={styles.btnContainer}>
           <TouchableOpacity style={styles.btn} onPress={() => handleLogin()}>
-            <Text style={styles.btnText}>Continue</Text>
+            <Text style={styles.btnText}>Continuer</Text>
           </TouchableOpacity>
         </View>
     </View>
