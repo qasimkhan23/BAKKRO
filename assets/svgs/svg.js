@@ -19,6 +19,10 @@ import backIcon from "./BackIcon.svg";
 import calendar from "./Calendar.svg";
 import minus from "./minus.svg";
 import plus from "./plus.svg";
+import filter from "./Filter.svg";
+import search from "./Search.svg";
+import liked from "./Liked.svg";
+import notLiked from "./NotLiked.svg";
 
 export const Logo = logo;
 export const InactiveHome = inactiveHome;
@@ -39,3 +43,7 @@ export const BackIcon = backIcon;
 export const Calendar = calendar;
 export const Plus = plus;
 export const Minus = minus;
+export const Filter = filter;
+export const Search = search;
+export const Liked = liked;
+export const NotLiked = notLiked;

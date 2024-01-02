@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   iconContainer: {
-    flex: 0.61,
+    flex: 0.62,
     alignItems: "flex-start",
   },
   backIcon: {

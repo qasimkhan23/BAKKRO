@@ -19,7 +19,7 @@ import SearchStackScreens from "./SearchStack";
 import OwnerStackScreens from "./OwnerStack";
 const BottomTab = createBottomTabNavigator();
 
-const BottomStackScreens: FC<{}> = ({ navigation }: any) => {
+const BottomStackScreens = ({ navigation }) => {
   return (
     <BottomTab.Navigator
       initialRouteName="Home"

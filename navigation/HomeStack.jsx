@@ -4,7 +4,7 @@ import HomeScreen from "../src/screens/home/Home";
 import BookingScreen from "../src/screens/booking/Booking";
 const HomeStack = createNativeStackNavigator();
 
-const HomeStackScreens: FC<{}> = () => {
+const HomeStackScreens = () => {
   return (
     <HomeStack.Navigator screenOptions={{ headerShown: false }}>
       <HomeStack.Screen component={HomeScreen} name="HomeScreen" />

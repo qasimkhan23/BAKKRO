@@ -4,7 +4,7 @@ import LoginScreen from "../src/screens/login/Login";
 
 const EventsStack = createNativeStackNavigator();
 
-const EventsStackScreens: FC<{}> = () => {
+const EventsStackScreens = () => {
   return (
     <EventsStack.Navigator screenOptions={{ headerShown: false }}>
       <EventsStack.Screen component={LoginScreen} name="LoginScreen" />

@@ -4,7 +4,7 @@ import LoginScreen from "../src/screens/login/Login";
 
 const ExploreStack = createNativeStackNavigator();
 
-const ExploreStackScreens: FC<{}> = () => {
+const ExploreStackScreens = () => {
   return (
     <ExploreStack.Navigator screenOptions={{ headerShown: false }}>
       <ExploreStack.Screen component={LoginScreen} name="ExploreScreen" />

@@ -1,12 +1,13 @@
 import React, { FC } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import LoginScreen from "../src/screens/login/Login";
+import SearchScreen from "../src/screens/search/Search";
+
 const SearchStack = createNativeStackNavigator();
 
-const SearchStackScreens: FC<{}> = () => {
+const SearchStackScreens = () => {
   return (
     <SearchStack.Navigator screenOptions={{ headerShown: false }}>
-      <SearchStack.Screen component={LoginScreen} name="LoginScreen" />
+      <SearchStack.Screen component={SearchScreen} name="SearchScreen" />
     </SearchStack.Navigator>
   );
 };

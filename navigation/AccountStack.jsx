@@ -4,7 +4,7 @@ import LoginScreen from "../src/screens/login/Login";
 
 const ProfileStack = createNativeStackNavigator();
 
-const ProfileStackScreens: FC<{}> = () => {
+const ProfileStackScreens = () => {
   return (
     <ProfileStack.Navigator screenOptions={{ headerShown: false }}>
       <ProfileStack.Screen component={LoginScreen} name="LoginScreen" />
