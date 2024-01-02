@@ -1,13 +1,15 @@
 import React, { FC } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "../src/screens/home/Home";
-const ChatStack = createNativeStackNavigator();
+import BookingScreen from "../src/screens/booking/Booking";
+const HomeStack = createNativeStackNavigator();
 
-const ChatStackScreens: FC<{}> = () => {
+const HomeStackScreens: FC<{}> = () => {
   return (
-    <ChatStack.Navigator screenOptions={{ headerShown: false }}>
-      <ChatStack.Screen component={HomeScreen} name="HomeScreen" />
-    </ChatStack.Navigator>
+    <HomeStack.Navigator screenOptions={{ headerShown: false }}>
+      <HomeStack.Screen component={HomeScreen} name="HomeScreen" />
+      <HomeStack.Screen component={BookingScreen} name="BookingScreen" />
+    </HomeStack.Navigator>
   );
 };
-export default ChatStackScreens;
+export default HomeStackScreens;

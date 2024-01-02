@@ -10,9 +10,8 @@ import {
 } from "react-native";
 import { Profile, Currency, HomeMainImage } from "../../../assets/svgs/svg";
 import styles from "./Styles";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-
-const HomeScreen = ({ route }) => {
+import NewsCard from "../../components/newsCard/NewsCard";
+const HomeScreen = ({ navigation, route }) => {
   console.log("route", route);
   const { firstName, lastName } = route.params;
   return (
@@ -43,7 +42,10 @@ const HomeScreen = ({ route }) => {
                 Find accommodation
               </Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.purchaseBtn}>
+            <TouchableOpacity
+              style={styles.purchaseBtn}
+              onPress={() => navigation.navigate("BookingScreen")}
+            >
               <Text style={styles.purchaseBtnText}>Purchase/Rental</Text>
             </TouchableOpacity>
           </View>
@@ -52,6 +54,7 @@ const HomeScreen = ({ route }) => {
         <ScrollView
           alwaysBounceVertical={false}
           showsVerticalScrollIndicator={false}
+          style={{ marginTop: 2 }}
         >
           <ImageBackground
             style={styles.ImageBackground}
@@ -62,6 +65,15 @@ const HomeScreen = ({ route }) => {
               Broad way street ,<Text style={styles.country}>America</Text>
             </Text>
           </ImageBackground>
+
+          <Text style={styles.news}>News Of The Week</Text>
+          <ScrollView
+            style={styles.cardsContainer}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+          >
+            <NewsCard />
+          </ScrollView>
         </ScrollView>
       </View>
     </View>

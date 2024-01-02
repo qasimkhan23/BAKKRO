@@ -5,13 +5,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#FFF",
-    padding: 25,
+    paddingLeft: 25,
+    paddingRight: 25,
+
     paddingTop: "20%",
   },
   bodyContainer: {
     // backgroundColor: "red",
-    // marginTop: "10%",
-    // alignItems: "center",
+
+    flex: 1,
   },
   infoContainer: {
     flexDirection: "row",
@@ -109,6 +111,46 @@ const styles = StyleSheet.create({
     color: "#FFF",
     marginLeft: 16,
     marginBottom: 17,
+  },
+  news: {
+    fontFamily: "bold",
+    fontSize: 16,
+    color: "#3A3A47",
+    marginTop: 50,
+  },
+  cardsContainer: { marginTop: 12, marginBottom: 35 },
+
+  card: {
+    marginTop: 12,
+    marginBottom: 35,
+    width: 130,
+    backgroundColor: "white",
+    borderRadius: 4,
+    // height: 300,
+    // flex: 1,
+    // padding: 35,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  cardTextContainer: {
+    padding: 11,
+  },
+  cardTitle: {
+    fontFamily: "bold",
+    fontSize: 12,
+    color: "#000",
+  },
+  cardDesp: {
+    fontFamily: "light",
+    fontSize: 10,
+    color: "#000",
+    marginTop: 2,
   },
 });
 export default styles;

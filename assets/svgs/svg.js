@@ -15,6 +15,10 @@ import activeAccount from "./ActiveAccount.svg";
 
 import inactiveAccount from "./InactiveAccount.svg";
 import homeMainImage from "./HomeMainImage.svg";
+import backIcon from "./BackIcon.svg";
+import calendar from "./Calendar.svg";
+import minus from "./minus.svg";
+import plus from "./plus.svg";
 
 export const Logo = logo;
 export const InactiveHome = inactiveHome;
@@ -31,3 +35,7 @@ export const InactiveFavorite = inactiveFavorite;
 export const InactiveOwner = inactiveOwner;
 export const InactiveAccount = inactiveAccount;
 export const HomeMainImage = homeMainImage;
+export const BackIcon = backIcon;
+export const Calendar = calendar;
+export const Plus = plus;
+export const Minus = minus;
