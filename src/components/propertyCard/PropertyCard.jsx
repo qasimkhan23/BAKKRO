@@ -3,21 +3,19 @@ import { ScrollView, Text, View, Image, ImageBackground } from "react-native";
 import { Liked, NotLiked } from "../../../assets/svgs/svg";
 import styles from "./Styles";
 
-const PropertyCard = ({ details }) => {
-  const { title, desp, image, index, price } = details;
+const PropertyCard = ({ details, type, customStyles }) => {
+  const { title, desp, image, index, price, liked } = details;
   return (
-    <View style={styles.cardContainer}>
-      <View style={[styles.card, { marginLeft: index == 0 ? 0 : 18 }]}>
-        <ImageBackground
-          style={{
-            height: 109,
-            width: 153,
-            alignItems: "flex-end",
-            padding: 4,
-          }}
-          source={image}
-        >
-          <Liked />
+    <View style={[styles.cardContainer]}>
+      <View
+        style={[
+          styles.card,
+          customStyles,
+          { marginRight: type == "mostPopular" ? 12 : 12 },
+        ]}
+      >
+        <ImageBackground style={styles.image} source={image}>
+          {liked == true ? <Liked /> : <NotLiked />}
         </ImageBackground>
         <View style={styles.cardTextContainer}>
           <Text style={styles.cardTitle}>{title}</Text>

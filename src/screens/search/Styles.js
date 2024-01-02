@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
   },
   bodyContainer: {
     display: "flex",
+    flex: 1,
   },
   searchContainer: {
     marginTop: 26,
@@ -43,6 +44,15 @@ const styles = StyleSheet.create({
     marginTop: 26,
   },
   popularText: {
+    fontFamily: "bold",
+    fontSize: 16,
+    color: "#3A3A47",
+  },
+  mostViewedContainer: {
+    // marginTop: 20,
+    flex: 1,
+  },
+  mostViewsText: {
     fontFamily: "bold",
     fontSize: 16,
     color: "#3A3A47",

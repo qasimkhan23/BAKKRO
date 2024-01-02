@@ -43,7 +43,10 @@ const SearchScreen = () => {
   return (
     <View style={[styles.container]}>
       <Header title={"Search"} />
-      <View style={styles.bodyContainer}>
+      <ScrollView
+        style={styles.bodyContainer}
+        showsVerticalScrollIndicator={false}
+      >
         {/* search view */}
         <View style={styles.searchContainer}>
           <View style={styles.iconContainer}>
@@ -58,18 +61,37 @@ const SearchScreen = () => {
         </View>
         {/* search view ends */}
 
+        {/* most popular view */}
         <View style={styles.popularViewContainer}>
           <Text style={styles.popularText}>Most Popular</Text>
 
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             <View style={{ flexDirection: "row" }}>
               {data.map((item, index) => (
-                <PropertyCard key={item.id} details={{ ...item, index }} />
+                <PropertyCard
+                  key={item.id}
+                  details={{ ...item, index }}
+                  type="mostPopular"
+                />
               ))}
             </View>
           </ScrollView>
         </View>
-      </View>
+        {/* most popular view ends here */}
+        <View style={styles.mostViewedContainer}>
+          <Text style={styles.mostViewsText}>Most View</Text>
+
+          <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
+            {data.map((item, index) => (
+              <PropertyCard
+                key={item.id}
+                details={{ ...item, index }}
+                customStyles={{ marginBottom: 20 }}
+              />
+            ))}
+          </View>
+        </View>
+      </ScrollView>
     </View>
   );
 };

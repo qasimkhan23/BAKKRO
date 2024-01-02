@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Image,
   Text,
@@ -14,6 +14,12 @@ import NewsCard from "../../components/newsCard/NewsCard";
 import Header from "../../components/header/Header";
 
 const BookingScreen = ({ navigation }) => {
+  const [activeIndex, setActiveIndex] = useState(1);
+  const [rooms, setRooms] = useState(3);
+
+  const [adults, setAdults] = useState(3);
+  const [children, setChildrens] = useState(0);
+
   const tagsData = [
     {
       title: "Abobo",
@@ -96,14 +102,13 @@ const BookingScreen = ({ navigation }) => {
             {tagsData.map((item, index) => (
               <TouchableOpacity
                 style={[
-                  item.status == "inactive"
-                    ? styles.inactiveTag
-                    : styles.activeTag,
+                  activeIndex !== index ? styles.inactiveTag : styles.activeTag,
                 ]}
+                onPress={() => setActiveIndex(index)}
               >
                 <Text
                   style={
-                    item.status == "inactive"
+                    activeIndex !== index
                       ? styles.tagText
                       : styles.activeTagText
                   }
@@ -131,11 +136,21 @@ const BookingScreen = ({ navigation }) => {
           <View style={styles.optionsView}>
             <Text style={styles.room}>Rooms</Text>
             <View style={styles.counterView}>
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => {
+                  if (rooms !== 0) {
+                    setRooms(rooms - 1);
+                  }
+                }}
+              >
                 <Minus />
               </TouchableOpacity>
-              <Text style={styles.number}>3</Text>
-              <TouchableOpacity>
+              <Text style={styles.number}>{rooms}</Text>
+              <TouchableOpacity
+                onPress={() => {
+                  setRooms(rooms + 1);
+                }}
+              >
                 <Plus />
               </TouchableOpacity>
             </View>
@@ -148,11 +163,21 @@ const BookingScreen = ({ navigation }) => {
             </View>
 
             <View style={styles.counterView}>
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => {
+                  if (adults !== 0) {
+                    setAdults(adults - 1);
+                  }
+                }}
+              >
                 <Minus />
               </TouchableOpacity>
-              <Text style={styles.number}>3</Text>
-              <TouchableOpacity>
+              <Text style={styles.number}>{adults}</Text>
+              <TouchableOpacity
+                onPress={() => {
+                  setAdults(adults + 1);
+                }}
+              >
                 <Plus />
               </TouchableOpacity>
             </View>
@@ -165,11 +190,21 @@ const BookingScreen = ({ navigation }) => {
             </View>
 
             <View style={styles.counterView}>
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => {
+                  if (children !== 0) {
+                    setChildrens(children - 1);
+                  }
+                }}
+              >
                 <Minus />
               </TouchableOpacity>
-              <Text style={styles.number}>0</Text>
-              <TouchableOpacity>
+              <Text style={styles.number}>{children}</Text>
+              <TouchableOpacity
+                onPress={() => {
+                  setChildrens(children + 1);
+                }}
+              >
                 <Plus />
               </TouchableOpacity>
             </View>

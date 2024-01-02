@@ -39,5 +39,11 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: "#000",
   },
+  image: {
+    height: 109,
+    width: 153,
+    alignItems: "flex-end",
+    padding: 4,
+  },
 });
 export default styles;
