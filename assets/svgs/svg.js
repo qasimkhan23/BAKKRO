@@ -24,6 +24,8 @@ import search from "./Search.svg";
 import liked from "./Liked.svg";
 import notLiked from "./NotLiked.svg";
 import cross from "./Cross.svg";
+import activeRadio from "./ActiveRadio.svg";
+import inactiveRadio from "./InactiveRadio.svg";
 
 export const Logo = logo;
 export const InactiveHome = inactiveHome;
@@ -34,6 +36,8 @@ export const ActiveOwner = activeOwner;
 export const ActiveAccount = activeAccount;
 export const Profile = profile;
 export const Currency = currency;
+export const ActiveRadio = activeRadio;
+export const InactiveRadio = inactiveRadio;
 
 export const InactiveSearch = inactiveSearch;
 export const InactiveFavorite = inactiveFavorite;

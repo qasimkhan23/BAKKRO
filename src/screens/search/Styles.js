@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   modalMainView: {
     flex: 1,
     backgroundColor: "white",
-    width: "85%",
+    width: "102%",
     alignSelf: "flex-end",
     marginRight: -20,
     marginTop: -23,
