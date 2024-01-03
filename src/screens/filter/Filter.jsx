@@ -19,7 +19,7 @@ import styles from "./Styles";
 import PropertyCard from "../../components/propertyCard/PropertyCard";
 import DropDownPicker from "react-native-dropdown-picker";
 
-const FilterScreen = () => {
+const FilterScreen = ({ searchCallback, toggleModal }) => {
   const [activeIndex, setActiveIndex] = useState(1);
   const [radioButtonValue, setRadioButtonValue] = useState("yes");
 
@@ -141,6 +141,7 @@ const FilterScreen = () => {
         <View style={styles.zoneTagContainer}>
           {tagsData.map((item, index) => (
             <TouchableOpacity
+              key={index}
               style={[
                 activeIndex !== index ? styles.inactiveTag : styles.activeTag,
               ]}
@@ -189,6 +190,7 @@ const FilterScreen = () => {
         <View style={styles.workshopTagContainer}>
           {noOfWorkshops.map((item, i) => (
             <TouchableOpacity
+              key={i}
               onPress={() => setActiveWorkshop(i)}
               style={
                 activeWorkshop !== i
@@ -214,6 +216,7 @@ const FilterScreen = () => {
         <View style={styles.workshopTagContainer}>
           {noOfWorkshops.map((item, i) => (
             <TouchableOpacity
+              key={i}
               onPress={() => setActiveRoom(i)}
               style={
                 activeRoom !== i
@@ -283,8 +286,14 @@ const FilterScreen = () => {
       </View>
 
       <View style={styles.btnContainer}>
-        <TouchableOpacity style={styles.btn}>
-          <Text style={styles.btnText}>Apply</Text>
+        <TouchableOpacity
+          style={styles.btn}
+          onPress={() => {
+            searchCallback(true);
+            toggleModal();
+          }}
+        >
+          <Text style={styles.btnText}>Search</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>
