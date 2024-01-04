@@ -14,7 +14,7 @@ import PropertyCard from "../../components/propertyCard/PropertyCard";
 import Modal from "react-native-modal";
 import FilterScreen from "../filter/Filter";
 import SearchCard from "../../components/searchCard/SearchCard";
-const SearchScreen = () => {
+const SearchScreen = ({ navigation }) => {
   const [searched, setSearched] = useState(false);
   let data = [
     {
@@ -123,6 +123,9 @@ const SearchScreen = () => {
                         key={item.id}
                         details={{ ...item, index }}
                         type="mostPopular"
+                        handleClickCallback={() =>
+                          navigation.navigate("PropertyDetailScreen")
+                        }
                       />
                     ))}
                   </View>

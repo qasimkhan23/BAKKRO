@@ -1,18 +1,26 @@
 import React from "react";
-import { ScrollView, Text, View, Image, ImageBackground } from "react-native";
+import {
+  ScrollView,
+  Text,
+  View,
+  Image,
+  ImageBackground,
+  TouchableOpacity,
+} from "react-native";
 import { Liked, NotLiked } from "../../../assets/svgs/svg";
 import styles from "./Styles";
 
-const PropertyCard = ({ details, type, customStyles }) => {
+const PropertyCard = ({ details, type, customStyles, handleClickCallback }) => {
   const { title, desp, image, index, price, liked } = details;
   return (
     <View style={[styles.cardContainer]}>
-      <View
+      <TouchableOpacity
         style={[
           styles.card,
           customStyles,
           { marginRight: type == "mostPopular" ? 12 : 12 },
         ]}
+        onPress={() => handleClickCallback()}
       >
         <ImageBackground style={styles.image} source={image}>
           {liked == true ? <Liked /> : <NotLiked />}
@@ -24,7 +32,7 @@ const PropertyCard = ({ details, type, customStyles }) => {
           </Text>
           <Text style={styles.price}>{price}</Text>
         </View>
-      </View>
+      </TouchableOpacity>
     </View>
   );
 };

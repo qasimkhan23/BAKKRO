@@ -5,13 +5,13 @@ import { BackIcon } from "../../../assets/svgs/svg";
 
 import styles from "./Styles";
 
-const Header = ({ title }) => {
+const Header = ({ title, iconContainerStyles }) => {
   const navigation = useNavigation();
 
   return (
     <View style={styles.header}>
-      <View style={styles.actionsContainer}>
-        <View style={styles.iconContainer}>
+      <View style={[styles.actionsContainer]}>
+        <View style={[styles.iconContainer, iconContainerStyles]}>
           <TouchableOpacity
             style={styles.backIcon}
             onPress={() => navigation.goBack()}
