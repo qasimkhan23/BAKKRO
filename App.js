@@ -7,6 +7,7 @@ import { LogBox } from "react-native";
 LogBox.ignoreLogs([
   "Non-serializable values were found in the navigation state",
   "ViewPropTypes will be removed from React Native",
+  "Animated: `useNativeDriver` was not specified. This is a required option and must be explicitly set to `true` or `false`",
 ]);
 export default function App() {
   const [fontsLoaded] = useFonts({

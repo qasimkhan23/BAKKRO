@@ -22,8 +22,9 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   image: {
-    ...StyleSheet.absoluteFillObject,
-    resizeMode: "contain",
+    // ...StyleSheet.absoluteFillObject,
+    resizeMode: "cover",
+    width: "100%",
   },
   infoContainer: {
     flexDirection: "row",
@@ -221,6 +222,27 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#FFF",
     lineHeight: 20,
+  },
+  headerText: {
+    fontFamily: "bold",
+    fontSize: 20,
+    color: "#000",
+  },
+  actionsContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  iconContainer: {
+    flex: 0.62,
+    alignItems: "flex-start",
+  },
+  backIcon: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  titleContainer: {
+    flex: 1,
   },
 });
 export default styles;

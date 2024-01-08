@@ -11,8 +11,11 @@ import {
   TouchableOpacity,
   Platform,
   ScrollView,
+  Image,
+  Animated,
 } from "react-native";
 import {
+  BackIcon,
   Location,
   Whatsapp,
   ProfileImage,
@@ -28,7 +31,8 @@ import {
   Map,
 } from "../../../assets/svgs/svg";
 import styles from "./Styles";
-
+import { AnimtedHeader } from "../../components/animatedHeader/AnimatedHeader";
+import Header from "../../components/header/Header";
 const ENTRIES1 = [
   {
     illustration: require("../../../assets/carosel1.png"),
@@ -51,6 +55,7 @@ const { width: screenWidth } = Dimensions.get("window");
 const PropertyDetailScreen = ({ navigation }) => {
   const [entries, setEntries] = useState([]);
   const carouselRef = useRef(null);
+  const [scrollYValue, setScrollYValue] = useState(0);
 
   const goForward = () => {
     carouselRef.current.snapToNext();
@@ -63,31 +68,32 @@ const PropertyDetailScreen = ({ navigation }) => {
   const renderItem = ({ item, index }, parallaxProps) => {
     return (
       <View style={styles.item}>
-        <ParallaxImage
-          source={item.illustration}
-          containerStyle={styles.imageContainer}
-          style={styles.image}
-          parallaxFactor={0.4}
-          {...parallaxProps}
-        />
+        <Image source={item.illustration} style={styles.image} />
       </View>
     );
   };
 
   return (
     <View style={styles.container}>
-      <View>
-        <Carousel
-          ref={carouselRef}
-          sliderWidth={screenWidth}
-          sliderHeight={screenWidth}
-          itemWidth={screenWidth}
-          data={entries}
-          renderItem={renderItem}
-          hasParallaxImages={true}
-        />
-      </View>
-      <ScrollView>
+      <AnimtedHeader scrollYValue={scrollYValue} />
+      <ScrollView
+        scrollEventThrottle={16}
+        onScroll={(e) => {
+          setScrollYValue(e.nativeEvent.contentOffset.y);
+        }}
+      >
+        <View>
+          <Carousel
+            ref={carouselRef}
+            sliderWidth={screenWidth}
+            sliderHeight={screenWidth}
+            itemWidth={screenWidth}
+            data={entries}
+            renderItem={renderItem}
+            hasParallaxImages={true}
+          />
+        </View>
+
         <View style={styles.bodyContainer}>
           <View style={styles.infoContainer}>
             <View style={styles.titleContainer}>

@@ -12,11 +12,19 @@ const RootStack = createNativeStackNavigator();
 const AppNavigator = () => {
   return (
     <NavigationContainer>
-      <RootStack.Navigator initialRouteName={"SplashScreen"} screenOptions={{ headerShown: false }}
+      <RootStack.Navigator
+        initialRouteName={"SplashScreen"}
+        screenOptions={{ headerShown: false }}
       >
         <RootStack.Screen component={SplashStackScreens} name="SplashStack" />
-        <RootStack.Screen component={OtpSenderStackScreens } name="OtpSenderStack"/>
-        <RootStack.Screen component={OtpConfirmStackScreens} name="OtpConfirmStack"/>
+        <RootStack.Screen
+          component={OtpSenderStackScreens}
+          name="OtpSenderStack"
+        />
+        <RootStack.Screen
+          component={OtpConfirmStackScreens}
+          name="OtpConfirmStack"
+        />
         <RootStack.Screen component={AuthStackScreens} name="AuthStack" />
         <RootStack.Screen component={BottomStackScreens} name="BottomStack" />
       </RootStack.Navigator>

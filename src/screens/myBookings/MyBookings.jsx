@@ -16,7 +16,7 @@ import Header from "../../components/header/Header";
 import ListingCard from "../../components/listingCard/ListingCard";
 import Swipeable from "react-native-swipeable";
 
-const FavoriteScreen = ({ navigation }) => {
+const MyBookingsScreen = ({ navigation }) => {
   const [isSwiping, setIsSwiping] = useState(false);
   const [activeBtn, setActiveBtn] = useState(1);
 
@@ -95,7 +95,7 @@ const FavoriteScreen = ({ navigation }) => {
   ];
   return (
     <View style={[styles.container]}>
-      <Header title={"Favorite"} />
+      <Header title={"My Bookings"} iconContainerStyles={{ flex: 0.48 }} />
       <View style={styles.btnContainer}>
         <TouchableOpacity
           onPress={() => setActiveBtn(1)}
@@ -106,7 +106,7 @@ const FavoriteScreen = ({ navigation }) => {
               activeBtn == 1 ? styles.activeBtnText : styles.inactiveBtnText
             }
           >
-            Properties
+            Past Booking
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
@@ -118,34 +118,47 @@ const FavoriteScreen = ({ navigation }) => {
               activeBtn == 2 ? styles.activeBtnText : styles.inactiveBtnText
             }
           >
-            Accommodations
+            Upcoming Bookings
           </Text>
         </TouchableOpacity>
       </View>
 
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        // scrollEnabled={isSwiping}
-      >
-        <View style={{ marginTop: 27 }}>
-          {searchData.map((item, index) => (
-            <Swipeable
-              rightButtons={rightButtons}
-              rightButtonWidth={85}
-              onSwipeStart={() => setIsSwiping(true)}
-              onSwipeRelease={() => setIsSwiping(false)}
-            >
-              <ListingCard
-                key={item.id}
-                details={{ ...item, index }}
-                customStyles={{ marginBottom: 15 }}
-              />
-            </Swipeable>
-          ))}
-        </View>
-      </ScrollView>
+      {activeBtn == 1 && (
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View style={{ marginTop: 27 }}>
+            {searchData.map((item, index) => (
+              <TouchableOpacity
+                onPress={() => navigation.navigate("BookingsDetailsScreen")}
+              >
+                <ListingCard
+                  key={item.id}
+                  details={{ ...item, index }}
+                  customStyles={{ marginBottom: 15 }}
+                />
+              </TouchableOpacity>
+            ))}
+          </View>
+        </ScrollView>
+      )}
+
+      {activeBtn == 2 && (
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View style={{ marginTop: 27 }}>
+            {searchData.map((item, index) => (
+              <TouchableOpacity>
+                <ListingCard
+                  key={item.id}
+                  details={{ ...item, index }}
+                  customStyles={{ marginBottom: 15 }}
+                  editIcon
+                />
+              </TouchableOpacity>
+            ))}
+          </View>
+        </ScrollView>
+      )}
     </View>
   );
 };
 
-export default FavoriteScreen;
+export default MyBookingsScreen;

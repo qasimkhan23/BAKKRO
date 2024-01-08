@@ -73,11 +73,12 @@ const styles = StyleSheet.create({
   actionTab: {
     flexDirection: "row",
     justifyContent: "space-between",
+    alignItems: "center",
   },
   tabText: {
     fontFamily: "bold",
     fontSize: 16,
-    color: "#3A3A47",
+    color: "#6B6F73",
     marginLeft: 11,
   },
   tabInfo: {
@@ -85,7 +86,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   tabMargin: {
-    marginTop: 34,
+    marginTop: 24,
   },
 });
 export default styles;

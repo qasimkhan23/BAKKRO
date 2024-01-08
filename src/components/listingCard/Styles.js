@@ -7,9 +7,9 @@ const styles = StyleSheet.create({
   },
   card: {
     marginBottom: 15,
-    width: "98%",
+    // width: "100%",
     backgroundColor: "white",
-    borderRadius: 4,
+    borderRadius: 9,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -19,12 +19,14 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
     padding: 10,
-    // marginRight: 1,
-    marginLeft: 1,
+    marginLeft: 0.5,
+    marginRight: 0.5,
     flexDirection: "row",
+    justifyContent: "space-between",
   },
   cardTextContainer: {
-    padding: 11,
+    // padding: 11,
+    paddingHorizontal: 11,
   },
   cardTitle: {
     fontFamily: "bold",
