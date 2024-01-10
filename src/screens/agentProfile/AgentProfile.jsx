@@ -12,6 +12,7 @@ import {
   Minus,
   Stars,
   MainProfileImage,
+  ProfileImage,
   Location,
 } from "../../../assets/svgs/svg";
 import styles from "./Styles";
@@ -112,17 +113,84 @@ const AgentProfileScreen = ({ navigation }) => {
           </Text>
         </TouchableOpacity>
       </View>
-
+      {currentActiveTab == 1 && (
+        <View style={{ marginTop: 20 }}>
+          <View style={styles.comentTextContainer}>
+            <Text style={styles.comentText}>
+              Lorem ipsum dolor sit amet consectetur. Bibendum con sectetur in
+              libero enim congue porta sit facilisis. Volu tpat lobortis proin
+              gravida nulla dui urna duis. Dictum tincidunt viverra augue
+              tortor. Pretium pellentesque bla ndit et nec vitae lacus lorem
+              adipiscing etiam. Egestas massa ullamcorper
+            </Text>
+          </View>
+        </View>
+      )}
       {currentActiveTab == 2 && (
         <ScrollView showsVerticalScrollIndicator={false}>
-          {searchData.map((item, index) => (
-            <ListingCard
-              key={item.id}
-              details={{ ...item, index }}
-              customStyles={{ marginBottom: 20 }}
-            />
-          ))}
+          <View style={{ marginTop: 20 }}>
+            {searchData.map((item, index) => (
+              <ListingCard
+                key={item.id}
+                details={{ ...item, index }}
+                customStyles={{
+                  marginBottom: 20,
+                  justifyContent: "flex-start",
+                }}
+              />
+            ))}
+          </View>
         </ScrollView>
+      )}
+
+      {currentActiveTab == 3 && (
+        <>
+          <View style={{ marginTop: 20 }}>
+            <View style={styles.agentInfo}>
+              <ProfileImage />
+              <View style={styles.agentNameContainer}>
+                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                  <Text style={styles.agentName}>Louisa Wilson</Text>
+                </View>
+                <View style={styles.ratingsContainer}>
+                  <Stars />
+                </View>
+              </View>
+            </View>
+            <View style={styles.comentTextContainer}>
+              <Text style={styles.comentText}>
+                Lorem ipsum dolor sit amet consectetur. Bibendum con sectetur in
+                libero enim congue porta sit facilisis. Volu tpat lobortis proin
+                gravida nulla dui urna duis. Dictum tincidunt viverra augue
+                tortor. Pretium pellentesque bla ndit et nec vitae lacus lorem
+                adipiscing etiam. Egestas massa ullamcorper
+              </Text>
+            </View>
+          </View>
+
+          <View style={{ marginTop: 20 }}>
+            <View style={styles.agentInfo}>
+              <ProfileImage />
+              <View style={styles.agentNameContainer}>
+                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                  <Text style={styles.agentName}>Louisa Wilson</Text>
+                </View>
+                <View style={styles.ratingsContainer}>
+                  <Stars />
+                </View>
+              </View>
+            </View>
+            <View style={styles.comentTextContainer}>
+              <Text style={styles.comentText}>
+                Lorem ipsum dolor sit amet consectetur. Bibendum con sectetur in
+                libero enim congue porta sit facilisis. Volu tpat lobortis proin
+                gravida nulla dui urna duis. Dictum tincidunt viverra augue
+                tortor. Pretium pellentesque bla ndit et nec vitae lacus lorem
+                adipiscing etiam. Egestas massa ullamcorper
+              </Text>
+            </View>
+          </View>
+        </>
       )}
     </View>
   );

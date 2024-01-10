@@ -45,60 +45,68 @@ const FilterScreen = ({ searchCallback, toggleModal }) => {
   const [activeRoom, setActiveRoom] = useState(1);
 
   const noOfWorkshops = [1, 2, 3, 4, "5+"];
-  const tagsData = [
+  const [tagsData, setTagsData] = useState([
     {
       title: "Abobo",
-      status: "inactive",
+      status: false,
     },
     {
       title: "Adjamé",
-      status: "active",
+      status: true,
     },
     {
       title: "Bingerville",
-      status: "inactive",
+      status: false,
     },
     {
       title: "Anyama",
-      status: "inactive",
+      status: false,
     },
     {
       title: "Attécoubé",
-      status: "inactive",
+      status: false,
     },
     {
       title: "Koumassi",
-      status: "inactive",
+      status: false,
     },
     {
       title: "Treichville",
-      status: "inactive",
+      status: false,
     },
     {
       title: "Prt bouët",
-      status: "inactive",
+      status: false,
     },
     {
       title: "Cocody",
-      status: "inactive",
+      status: false,
     },
     {
       title: "Marcory",
-      status: "inactive",
+      status: false,
     },
     {
       title: "Songon",
-      status: "inactive",
+      status: false,
     },
     {
       title: "Yopougon",
-      status: "inactive",
+      status: false,
     },
     {
       title: "Plateau",
-      status: "inactive",
+      status: false,
     },
-  ];
+  ]);
+
+  const handleTagClck = (index) => {
+    let temp = [...tagsData];
+
+    temp[index].status = !temp[index].status;
+    setTagsData(temp);
+  };
+
   return (
     <ScrollView
       style={styles.bodyContainer}
@@ -143,13 +151,13 @@ const FilterScreen = ({ searchCallback, toggleModal }) => {
             <TouchableOpacity
               key={index}
               style={[
-                activeIndex !== index ? styles.inactiveTag : styles.activeTag,
+                item.status == false ? styles.inactiveTag : styles.activeTag,
               ]}
-              onPress={() => setActiveIndex(index)}
+              onPress={() => handleTagClck(index)}
             >
               <Text
                 style={
-                  activeIndex !== index ? styles.tagText : styles.activeTagText
+                  item.status == false ? styles.tagText : styles.activeTagText
                 }
               >
                 {item.title}

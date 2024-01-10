@@ -133,16 +133,17 @@ const SearchScreen = ({ navigation }) => {
               </View>
               <View style={styles.mostViewedContainer}>
                 <Text style={styles.mostViewsText}>Most View</Text>
-
-                <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
-                  {data.map((item, index) => (
-                    <PropertyCard
-                      key={item.id}
-                      details={{ ...item, index }}
-                      customStyles={{ marginBottom: 20 }}
-                    />
-                  ))}
-                </View>
+                <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                  <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
+                    {data.map((item, index) => (
+                      <PropertyCard
+                        key={item.id}
+                        details={{ ...item, index }}
+                        customStyles={{ marginBottom: 20 }}
+                      />
+                    ))}
+                  </View>
+                </ScrollView>
               </View>
             </>
           )}
@@ -156,7 +157,6 @@ const SearchScreen = ({ navigation }) => {
         <View style={styles.modalMainView}>
           <View style={styles.modalContainer}>
             <View style={styles.filterTextView}>
-              <Text style={styles.filterText}>Filter</Text>
               <TouchableOpacity onPress={toggleModal}>
                 <Cross />
               </TouchableOpacity>

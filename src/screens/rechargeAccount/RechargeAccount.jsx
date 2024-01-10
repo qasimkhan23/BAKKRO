@@ -69,7 +69,10 @@ const RechargeAccountScreen = ({ navigation }) => {
                   color={toggleCheckBox1 ? "#E97400" : undefined}
                   disabled={false}
                   value={toggleCheckBox1}
-                  onValueChange={(newValue) => setToggleCheckBox1(newValue)}
+                  onValueChange={(newValue) => {
+                    setToggleCheckBox1(newValue);
+                    setToggleCheckBox2(false);
+                  }}
                 />
                 <Currency />
                 <Text>{premiumValue}</Text>
@@ -99,7 +102,10 @@ const RechargeAccountScreen = ({ navigation }) => {
                   color={toggleCheckBox2 ? "#E97400" : undefined}
                   disabled={false}
                   value={toggleCheckBox2}
-                  onValueChange={(newValue) => setToggleCheckBox2(newValue)}
+                  onValueChange={(newValue) => {
+                    setToggleCheckBox2(newValue);
+                    setToggleCheckBox1(false);
+                  }}
                 />
                 <Currency />
                 <Text>{premiumPlusValue}</Text>

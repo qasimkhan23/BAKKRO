@@ -17,6 +17,7 @@ import HomestackScreens from "./HomeStack";
 import FavoriteStackScreens from "./FavoriteStack";
 import SearchStackScreens from "./SearchStack";
 import OwnerStackScreens from "./OwnerStack";
+
 const BottomTab = createBottomTabNavigator();
 
 const BottomStackScreens = ({ navigation }) => {

@@ -19,61 +19,68 @@ const BookingScreen = ({ navigation }) => {
 
   const [adults, setAdults] = useState(3);
   const [children, setChildrens] = useState(0);
-
-  const tagsData = [
+  const [tagsData, setTagsData] = useState([
     {
       title: "Abobo",
-      status: "inactive",
+      status: false,
     },
     {
       title: "Adjamé",
-      status: "active",
+      status: true,
     },
     {
       title: "Bingerville",
-      status: "inactive",
+      status: false,
     },
     {
       title: "Anyama",
-      status: "inactive",
+      status: false,
     },
     {
       title: "Attécoubé",
-      status: "inactive",
+      status: false,
     },
     {
       title: "Koumassi",
-      status: "inactive",
+      status: false,
     },
     {
       title: "Treichville",
-      status: "inactive",
+      status: false,
     },
     {
       title: "Prt bouët",
-      status: "inactive",
+      status: false,
     },
     {
       title: "Cocody",
-      status: "inactive",
+      status: false,
     },
     {
       title: "Marcory",
-      status: "inactive",
+      status: false,
     },
     {
       title: "Songon",
-      status: "inactive",
+      status: false,
     },
     {
       title: "Yopougon",
-      status: "inactive",
+      status: false,
     },
     {
       title: "Plateau",
-      status: "inactive",
+      status: false,
     },
-  ];
+  ]);
+
+  const handleTagClck = (index) => {
+    let temp = [...tagsData];
+
+    temp[index].status = !temp[index].status;
+    setTagsData(temp);
+  };
+
   return (
     <View style={[styles.container]}>
       <Header title={"Booking"} />
@@ -102,15 +109,13 @@ const BookingScreen = ({ navigation }) => {
             {tagsData.map((item, index) => (
               <TouchableOpacity
                 style={[
-                  activeIndex !== index ? styles.inactiveTag : styles.activeTag,
+                  item.status == false ? styles.inactiveTag : styles.activeTag,
                 ]}
-                onPress={() => setActiveIndex(index)}
+                onPress={() => handleTagClck(index)}
               >
                 <Text
                   style={
-                    activeIndex !== index
-                      ? styles.tagText
-                      : styles.activeTagText
+                    item.status == false ? styles.tagText : styles.activeTagText
                   }
                 >
                   {item.title}

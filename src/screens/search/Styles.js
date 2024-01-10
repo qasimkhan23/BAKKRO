@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   modalMainView: {
     flex: 1,
     backgroundColor: "white",
-    width: "102%",
+    width: "105%",
     alignSelf: "flex-end",
     marginRight: -20,
     marginTop: -23,
@@ -79,7 +79,8 @@ const styles = StyleSheet.create({
   filterTextView: {
     alignItems: "center",
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "flex-end",
+    marginTop: 20,
   },
 });
 export default styles;

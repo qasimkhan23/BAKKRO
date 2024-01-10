@@ -93,6 +93,27 @@ const FavoriteScreen = ({ navigation }) => {
       Icon: <Location />,
     },
   ];
+
+  let accSearchData = [
+    {
+      id: 2,
+      image: require("../../../assets/Diamonds.png"),
+      title: "Kpsum dolor",
+      desp: "Lorem ipsum dolor sit amet cons ectetur....",
+      price: "$952.90",
+      liked: false,
+      Icon: <Location />,
+    },
+    {
+      id: 1,
+      image: require("../../../assets/Cottage.png"),
+      title: "Willowcroft Cottage",
+      desp: "4517 Washington Ave. Manchester 39495",
+      liked: true,
+      price: "$750.90",
+      Icon: <Location />,
+    },
+  ];
   return (
     <View style={[styles.container]}>
       <Header title={"Favorite"} />
@@ -123,27 +144,55 @@ const FavoriteScreen = ({ navigation }) => {
         </TouchableOpacity>
       </View>
 
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        // scrollEnabled={isSwiping}
-      >
-        <View style={{ marginTop: 27 }}>
-          {searchData.map((item, index) => (
-            <Swipeable
-              rightButtons={rightButtons}
-              rightButtonWidth={85}
-              onSwipeStart={() => setIsSwiping(true)}
-              onSwipeRelease={() => setIsSwiping(false)}
-            >
-              <ListingCard
+      {activeBtn == 1 && (
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View style={{ marginTop: 27 }}>
+            {searchData.map((item, index) => (
+              <Swipeable
                 key={item.id}
-                details={{ ...item, index }}
-                customStyles={{ marginBottom: 15 }}
-              />
-            </Swipeable>
-          ))}
-        </View>
-      </ScrollView>
+                rightButtons={rightButtons}
+                rightButtonWidth={85}
+                onSwipeStart={() => setIsSwiping(true)}
+                onSwipeRelease={() => setIsSwiping(false)}
+              >
+                <ListingCard
+                  key={item.id}
+                  details={{ ...item, index }}
+                  customStyles={{
+                    marginBottom: 15,
+                    justifyContent: "flex-start",
+                  }}
+                />
+              </Swipeable>
+            ))}
+          </View>
+        </ScrollView>
+      )}
+
+      {activeBtn == 2 && (
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View style={{ marginTop: 27 }}>
+            {accSearchData.map((item, index) => (
+              <Swipeable
+                key={item.id}
+                rightButtons={rightButtons}
+                rightButtonWidth={85}
+                onSwipeStart={() => setIsSwiping(true)}
+                onSwipeRelease={() => setIsSwiping(false)}
+              >
+                <ListingCard
+                  key={item.id}
+                  details={{ ...item, index }}
+                  customStyles={{
+                    marginBottom: 15,
+                    justifyContent: "flex-start",
+                  }}
+                />
+              </Swipeable>
+            ))}
+          </View>
+        </ScrollView>
+      )}
     </View>
   );
 };

@@ -25,7 +25,11 @@ const HomeScreen = ({ navigation, route }) => {
             <Text style={styles.welcome}>Welcome to Bakkro</Text>
           </View>
           <View style={styles.profileImageContainer}>
-            <Profile />
+            <TouchableOpacity
+              onPress={() => navigation.navigate("NestedAccountScreens")}
+            >
+              <Profile />
+            </TouchableOpacity>
             <View style={styles.currencyContainer}>
               <Currency />
               <Text style={styles.balance}>0.00</Text>

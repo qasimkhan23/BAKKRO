@@ -11,7 +11,11 @@ import { Logo } from "../../../assets/svgs/svg";
 import styles from "./Styles";
 
 const OwnerScreen = () => {
-  return <View style={[styles.container]}></View>;
+  return (
+    <View style={[styles.container]}>
+      <Text style={{ alignSelf: "center", fontSize: 20 }}>Owner</Text>
+    </View>
+  );
 };
 
 export default OwnerScreen;

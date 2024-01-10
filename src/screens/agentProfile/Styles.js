@@ -70,5 +70,44 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#E97400",
   },
+  agentInfo: {
+    flexDirection: "row",
+  },
+  agentNameContainer: {
+    // flexDirection: "row",
+    justifyContent: "center",
+    marginLeft: 8,
+  },
+  agentName: {
+    fontFamily: "bold",
+    fontSize: 13,
+    color: "#000",
+  },
+  designation: {
+    fontFamily: "regular",
+    fontSize: 10,
+    color: "#000",
+    marginLeft: 2,
+  },
+  ratingsContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: 6,
+  },
+  ratings: {
+    fontFamily: "regular",
+    fontSize: 10,
+    color: "#000",
+    marginLeft: 2,
+  },
+  comentTextContainer: {
+    marginTop: 10,
+  },
+  comentText: {
+    fontFamily: "light",
+    fontSize: 11,
+    color: "#676767",
+    maxWidth: "85%",
+  },
 });
 export default styles;
